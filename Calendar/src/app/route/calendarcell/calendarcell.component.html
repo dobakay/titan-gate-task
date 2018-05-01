@@ -1,0 +1,8 @@
+<div class="table-cell" 
+    [ngClass]="{'today': checkIfToday()}"
+    (click)="clickEvent()">
+    {{date?.day}}
+
+    <div *ngIf="date?.events && (date.events.length !== 0)"
+        [ngClass]="{events: date.events.length !== 0}">Some Events here... </div>
+</div>

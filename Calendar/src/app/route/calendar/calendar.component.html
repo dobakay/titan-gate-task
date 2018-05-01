@@ -1,0 +1,29 @@
+<div id="cal">
+  <div class="header">
+    <span class="left button" id="prev" (click)="switchMonth(false)"> &lang; </span>
+    <span class="month-year" #monthYearLable id="label" (click)="switchMonth(null)"> {{monthLabel}}</span>
+    <span class="right button" id="next" (click)="switchMonth(true)"> &rang; </span>
+  </div>
+  <div class="days-of-week">
+    <div>Sunday</div>
+    <div>Monday</div>
+    <div>Tuesday</div>
+    <div>Wednesday</div>
+    <div>Thursday</div>
+    <div>Friday</div>
+    <div>Saturday</div>
+
+  </div>
+  <div #calendarGrid id="cal-frame" class="frame">
+    <div class="grid curr">
+      <div class="table-row" *ngFor="let weekRow of currentCalendarGrid">
+        <app-calendar-cell [date]="dateCell"
+                          (cellClickEvent)="showEventForm($event)"
+                          *ngFor="let dateCell of weekRow"></app-calendar-cell>
+      </div>
+      
+    </div>
+
+  </div>
+  <app-event-form (dateChange)="updateCalendar($event)" [(visible)]="displayEventContainerVisible" [date]="displayDate" ></app-event-form>
+</div>

@@ -1,0 +1,54 @@
+<div *ngIf="visible" class="dialog">
+    <h1>
+        <span>Date:</span>
+        <span class="badge badge-info">
+            <span>{{date?.day}}.</span>
+            <span>{{date?.month}}.</span>
+            <span>{{date?.year}}</span>
+        </span>
+    </h1>
+
+    <div class="event-nav">
+        <div class="btn-group" role="group" aria-label="">
+            <button type="button" (click)="previousEvent()" class="btn btn-default">previous</button>
+            <button type="button" class="btn btn-default" disabled>{{currentlyDisplayedEventIndex + 1}}</button>
+            <button type="button" (click)="nextEvent()" class="btn btn-default">next</button>
+        </div>
+    </div>
+
+    <!-- Event form for viewing and editing -->
+    <div>
+        <div>
+            <div class="form-group">
+                <input type="text"
+                            class="form-control form-control-lg"
+                            id="name"
+                            placeholder="Event Name"
+                             [attr.disabled]="!enableFormFlag ? '' : null"
+                             [(ngModel)]="currentlyDisplayedEvent.name"
+                            required>
+            </div>
+
+            <div class="form-group">
+                <textarea class="form-control"
+                            id="eventDetails"
+                            placeholder="Details..."
+                            [attr.disabled]="!enableFormFlag ? '' : null" 
+                            [(ngModel)]="currentlyDisplayedEvent.details"></textarea>
+            </div>
+
+            <button *ngIf="!enableFormFlag" (click)="addNewEvent()" class="btn btn-success">Add</button>
+            <button *ngIf="!enableFormFlag && date.events.length !== 0"(click)="enableForm()" type="submit" class="btn btn-primary">Edit</button>
+            <button *ngIf="!enableFormFlag" (click)="deleteCurrentEvent()" class="btn btn-danger">Delete</button>
+
+            <!-- Add New Event -->
+            <button *ngIf="enableFormFlag" (click)="createEvent()" class="btn btn-success">Submit</button>
+            <button *ngIf="enableFormFlag" (click)="cancelEventSubmition()" class="btn btn-warning">Cancel</button>
+
+        </div>
+
+    </div>
+
+    <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+</div>
+<div *ngIf="visible" class="overlay" (click)="close()"></div>

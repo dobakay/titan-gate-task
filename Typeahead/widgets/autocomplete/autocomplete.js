@@ -22,14 +22,14 @@ var autocomplete = (function($) {
 
         populateDropdown();
         self._dropdown.hide();
-    }
+    };
 
     function attachHandlers() {
         // add event listener for keypress of the input
         self._input.on('input', populateDropdown);
         self._input.on('keydown', navigateThroughDropdown);
         $(document).on('click', documentClickCheck);
-    }
+    };
 
     function populateDropdown() {
         closeDropdown();
@@ -106,7 +106,7 @@ var autocomplete = (function($) {
                 }, 300);
             }
         }
-    }
+    };
 
     function insertAutocompleteValue(value) {
         self._input.val(value);
@@ -121,13 +121,13 @@ var autocomplete = (function($) {
 
     function openDropdown() {
         self._dropdown.show();
-    }
+    };
 
     function documentClickCheck(e) {
         if(e.target !== self._input.parent()[0]) {
             closeDropdown();
         }
-    }
+    };
 
     return self;
 })(jQuery);

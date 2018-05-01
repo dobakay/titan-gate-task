@@ -1,0 +1,26 @@
+.table-cell {
+    float: left;
+    width: 150px;
+    height: 100px;
+
+}
+
+.table-cell.today {
+    background-color: #ccc;
+    color: #fff;
+}
+
+.table-cell:hover {
+    background-color: rgb(245, 91, 56);
+    color: #fff;
+}
+
+.events {
+    background-color: #ff3;
+    color: #00F;
+    width: 84%;
+    margin-left: 10%;
+    height: 49px;
+    border-right: 3px solid orange;
+    padding: 5px 0 5px 3px;
+}
