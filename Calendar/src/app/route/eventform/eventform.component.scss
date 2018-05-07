@@ -35,12 +35,25 @@
   background: none;
   color: #2d2d2d;
   position: absolute;
-  top: 8px;
+  top: 15px;
   right: 8px;
-  font-size: 1.2em;
+  font-size: 2.2em;
 }
 
 .event-nav {
   text-align: center;
   padding: 20px;
+}
+
+.btn.crud-btn, .badge {
+  background: lightblue;
+  color: #fff;
+}
+
+.btn-group .btn {
+  color: #fff;
+}
+
+.badge { 
+
 }

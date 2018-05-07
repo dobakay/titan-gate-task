@@ -1,8 +1,13 @@
 .table-cell {
-    float: left;
-    width: 150px;
-    height: 100px;
+    // float: left;
+    flex: 1;
 
+    height: 100%;
+    border: 1px solid #ccc;
+
+    :last-of-type {
+        border-right: none;
+    }
 }
 
 .table-cell.today {
@@ -11,16 +16,32 @@
 }
 
 .table-cell:hover {
-    background-color: rgb(245, 91, 56);
-    color: #fff;
 }
 
 .events {
-    background-color: #ff3;
-    color: #00F;
-    width: 84%;
-    margin-left: 10%;
-    height: 49px;
-    border-right: 3px solid orange;
+    background-color: lightblue;
+    color: #FFF;
     padding: 5px 0 5px 3px;
+
+}
+
+.events-overview {
+    text-overflow: ellipsis;
+    
+    white-space: nowrap;
+    overflow: hidden;
+    
+    height: 100%;
+}
+
+@media screen and (max-width: 576px) { /* <576px	Extra Small */
+
+}
+@media screen and (min-width: 576px) { /* ≥576px	Small */
+}
+@media screen and (min-width: 768px) { /* ≥768px	Medium */
+}
+@media screen and (min-width: 992px) { /* ≥992px	Large */
+}
+@media screen and (min-width: 1200px) { /* ≥1200px Extra large */
 }

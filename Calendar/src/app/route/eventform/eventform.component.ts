@@ -72,23 +72,23 @@ export class EventFormComponent implements OnInit {
         this.currentlyDisplayedEvent = {};
     }
 
-    createEvent() {
-        this.date.events.splice(++this.currentlyDisplayedEventIndex, 0, this.currentlyDisplayedEvent);
-        this.enableFormFlag = false;
-        this.createEventFlag = false;
-        if(this.date.events.length === 1) {
-            this.currentlyDisplayedEventIndex--;
+    createEvent(edit:boolean) {
+        if(edit) {
+            // this.date.events[this.currentlyDisplayedEventIndex] = this.currentlyDisplayedEvent;
+            this.enableFormFlag = false;
+        } else {
+            this.date.events.splice(++this.currentlyDisplayedEventIndex, 0, this.currentlyDisplayedEvent);
+            this.enableFormFlag = false;
+            this.createEventFlag = false;
+            if(this.date.events.length === 1) {
+                this.currentlyDisplayedEventIndex--;
+            }
+            this.dateChange.emit(this.date);
         }
-        this.dateChange.emit(this.date);
     }
 
     enableForm() {
         this.enableFormFlag = true;
-    }
-
-    editCurrentEvent() {
-        this.enableFormFlag = false;
-        this.dateChange.emit(this.date);
     }
 
     deleteCurrentEvent() {

@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer, ElementRef, ViewChild} from '@angular/core';
+import { CalendarDay } from './calendarday';
 
 @Component({
   selector: 'app-calendar',
@@ -72,21 +73,21 @@ export class CalendarComponent implements OnInit {
 
   };
 
-  showEventForm(data) {
+  showEventForm(data: CalendarDay) {
     if(data.day) {
       this.displayDate = data;
       this.displayEventContainerVisible = true;
     }
   }
 
-  createCal(year, month):any {
+  createCal(year:number, month: number):any {
 
     var day = 1,
       weekIndex, dayIndex,
       haveDays = true,
       startDay = new Date(year, month, day).getDay(),
       daysInMonths = [31, (((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0)) ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
-      calendar = [];
+      calendar:Array<Array<CalendarDay>> = [];
 
 
     if (this.cache[year]) {
@@ -116,7 +117,7 @@ export class CalendarComponent implements OnInit {
           }
           else {
             // days that are from the past month before the first week
-            calendar[weekIndex][dayIndex] = {};
+            calendar[weekIndex][dayIndex] = new CalendarDay(null, null, null, null);
           }
         } else if (day <= daysInMonths[month]) {
           calendar[weekIndex][dayIndex] = {
@@ -127,7 +128,7 @@ export class CalendarComponent implements OnInit {
           };
         } else {
           // days that are from the next month after the last week
-          calendar[weekIndex][dayIndex] = {};
+          calendar[weekIndex][dayIndex] = new CalendarDay(null, null, null, null);
           haveDays = false;
         }
         if (day > daysInMonths[month]) {
@@ -142,7 +143,7 @@ export class CalendarComponent implements OnInit {
     return this.cache[year][month];
   };
 
-  updateCalendar(data) {
+  updateCalendar(data: CalendarDay) {
     for (let week of this.cache[data.year][data.month - 1].calendarGrid) {
       if(week[data.day-1] === data.day) {
         week[data.day-1] = data;

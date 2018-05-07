@@ -1,7 +1,6 @@
 <div *ngIf="visible" class="dialog">
     <h1>
-        <span>Date:</span>
-        <span class="badge badge-info">
+        <span class="badge">
             <span>{{date?.day}}.</span>
             <span>{{date?.month}}.</span>
             <span>{{date?.year}}</span>
@@ -37,13 +36,13 @@
                             [(ngModel)]="currentlyDisplayedEvent.details"></textarea>
             </div>
 
-            <button *ngIf="!enableFormFlag" (click)="addNewEvent()" class="btn btn-success">Add</button>
-            <button *ngIf="!enableFormFlag && date.events.length !== 0"(click)="enableForm()" type="submit" class="btn btn-primary">Edit</button>
-            <button *ngIf="!enableFormFlag" (click)="deleteCurrentEvent()" class="btn btn-danger">Delete</button>
+            <button *ngIf="!enableFormFlag" (click)="addNewEvent()" class="btn crud-btn">Add</button>
+            <button *ngIf="!enableFormFlag && date.events.length !== 0"(click)="enableForm()" type="submit" class="btn crud-btn">Edit</button>
+            <button *ngIf="!enableFormFlag" (click)="deleteCurrentEvent()" class="btn crud-btn">Delete</button>
 
             <!-- Add New Event -->
-            <button *ngIf="enableFormFlag" (click)="createEvent()" class="btn btn-success">Submit</button>
-            <button *ngIf="enableFormFlag" (click)="cancelEventSubmition()" class="btn btn-warning">Cancel</button>
+            <button *ngIf="enableFormFlag" (click)="createEvent(!createEventFlag)" class="btn crud-btn">Submit</button>
+            <button *ngIf="enableFormFlag" (click)="cancelEventSubmition()" class="btn crud-btn">Cancel</button>
 
         </div>
 

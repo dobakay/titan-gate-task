@@ -1,8 +1,9 @@
-<div id="cal">
+<div id="cal" class="calendar-wrapper">
   <div class="header">
     <span class="left button" id="prev" (click)="switchMonth(false)"> &lang; </span>
     <span class="month-year" #monthYearLable id="label" (click)="switchMonth(null)"> {{monthLabel}}</span>
     <span class="right button" id="next" (click)="switchMonth(true)"> &rang; </span>
+    <span class="offset"></span>
   </div>
   <div class="days-of-week">
     <div>Sunday</div>
